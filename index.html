@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crystal Cleaners Nairobi</title>
+  <title>Crystal Cleaners — Nairobi &amp; Mombasa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -282,7 +282,102 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.on { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
+    /* ── LOCATIONS ── */
+    .locations { background: white; padding: 100px 6%; }
+    .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+    .loc-card {
+      border: 2px solid var(--border); border-radius: 12px;
+      padding: 36px 32px; transition: all 0.3s;
+    }
+    .loc-card:hover { border-color: var(--blue-sky); box-shadow: 0 12px 40px rgba(26,111,196,0.1); transform: translateY(-3px); }
+    .loc-city {
+      font-family: "Syne", sans-serif; font-size: 22px; font-weight: 800;
+      color: var(--ink); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .loc-dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-sky)); flex-shrink: 0; }
+    .loc-number { font-size: 17px; font-weight: 600; color: var(--blue); margin: 12px 0 20px; }
+    .loc-wa {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25d366; color: white; text-decoration: none;
+      padding: 11px 22px; border-radius: 5px; font-weight: 600; font-size: 14px;
+      transition: all 0.2s;
+    }
+    .loc-wa:hover { background: #22c55e; transform: translateY(-1px); }
+    .loc-call {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--blue); color: var(--blue); text-decoration: none;
+      padding: 9px 20px; border-radius: 5px; font-weight: 600; font-size: 14px;
+      margin-left: 10px; transition: all 0.2s;
+    }
+    .loc-call:hover { background: var(--blue); color: white; }
+
+    /* ── BOOKING FORM ── */
+    .booking { background: var(--off); padding: 100px 6%; }
+    .booking-inner { max-width: 660px; margin: 0 auto; }
+    .booking-inner .sec-kicker { display: block; }
+    .booking-inner .sec-title { margin-bottom: 10px; }
+    .booking-sub { color: var(--muted); font-size: 16px; margin-bottom: 40px; line-height: 1.7; }
+
+    .bform { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue-deep); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: "Outfit", sans-serif;
+      font-size: 15px; color: var(--ink);
+      background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,111,196,0.1);
+    }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a7a9a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .city-notice {
+      background: var(--blue-light); border: 1px solid rgba(43,181,232,0.3);
+      border-radius: 6px; padding: 12px 16px;
+      font-size: 13px; color: var(--blue-deep); font-weight: 500;
+      display: none;
+    }
+    .city-notice.show { display: block; }
+
+    .btn-submit {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      color: white; border: none; cursor: pointer;
+      padding: 16px 32px; border-radius: 6px;
+      font-family: "Syne", sans-serif; font-weight: 700; font-size: 16px;
+      transition: all 0.25s; box-shadow: 0 4px 20px rgba(26,111,196,0.3);
+      width: 100%;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(26,111,196,0.4); }
+    .btn-submit svg { width: 20px; height: 20px; fill: white; }
+
+    @media (max-width: 960px) {
+      .locations-grid { grid-template-columns: 1fr; gap: 20px; }
+      .locations, .booking { padding: 80px 6%; }
+    }
+    @media (max-width: 767px) {
+      .form-row { grid-template-columns: 1fr; }
+      .locations, .booking { padding: 70px 5%; }
+      .loc-call { margin-left: 0; margin-top: 10px; display: inline-flex; }
+    }
+    @media (max-width: 480px) {
+      .locations, .booking { padding: 60px 4%; }
+      .loc-card { padding: 28px 22px; }
+    }
 
     /* Large tablets / small laptops: 960px–1199px */
     @media (max-width: 1199px) {
@@ -374,17 +469,17 @@
 <nav>
   <a href="#home" class="nav-brand">
     <!-- Replace logo.png with your actual logo filename -->
-    <img src="crystalcleanerslogo.jpeg" alt="Crystal Cleaners" />
+    <img src="logo.png" alt="Crystal Cleaners" />
     <div>
       <span class="brand-name">Crystal Cleaners</span>
-      <span class="brand-sub">Nairobi</span>
+      <span class="brand-sub">Nairobi &amp; Mombasa</span>
     </div>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact" class="nav-book">Book Now</a></li>
+    <li><a href="#book" class="nav-book">Book Now</a></li>
   </ul>
   <button class="ham" id="ham" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -394,7 +489,7 @@
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#why" onclick="closeMenu()">Why Us</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="#contact" onclick="closeMenu()">Book Now</a>
+  <a href="#book" onclick="closeMenu()">Book Now</a>
 </nav>
 
 <!-- HERO -->
@@ -402,7 +497,7 @@
   <div class="hero-bg-shape"></div>
   <div class="hero-bg-shape-2"></div>
 
-  <div class="hero-badge"><div class="badge-dot"></div><span>Nairobi's Deep Cleaning Specialists</span></div>
+  <div class="hero-badge"><div class="badge-dot"></div><span>Nairobi &amp; Mombasa Deep Cleaning Specialists</span></div>
 
   <h1>
     <span class="blue">Crystal</span> Clean.<br>
@@ -410,7 +505,7 @@
   </h1>
   <div class="hero-line"></div>
 
-  <p class="hero-tagline">Professional deep cleaning for sofas, mattresses, carpets, floors, tiles, and cars , powered by quality machines and delivered with care.</p>
+  <p class="hero-tagline">Professional deep cleaning for sofas, mattresses, carpets, floors, tiles, and cars — powered by quality machines and delivered with care.</p>
 
   <div class="hero-pillars">
     <div class="pillar">
@@ -428,7 +523,7 @@
   </div>
 
   <div class="hero-ctas">
-    <a href="https://wa.me/254759309280" class="btn-blue" target="_blank">Book With Us Today</a>
+    <a href="#book" class="btn-blue">Book With Us Today</a>
     <a href="#services" class="btn-outline-blue">See Our Services</a>
   </div>
 </section>
@@ -438,13 +533,13 @@
   <div class="sec-hd reveal">
     <span class="sec-kicker">What We Do</span>
     <h2 class="sec-title">Our <span>Services</span></h2>
-    <p class="sec-sub">Professional deep cleaning powered by quality machines , for every surface in your home and car.</p>
+    <p class="sec-sub">Professional deep cleaning powered by quality machines — for every surface in your home and car.</p>
   </div>
   <div class="svc-grid">
     <div class="svc-card reveal">
       <div class="svc-num">01</div>
       <div class="svc-title">Sofa Cleaning</div>
-      <p class="svc-desc">Deep extraction cleaning for all sofa types , removing stains, allergens, and odours and restoring fabric freshness professionally.</p>
+      <p class="svc-desc">Deep extraction cleaning for all sofa types — removing stains, allergens, and odours and restoring fabric freshness professionally.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">02</div>
@@ -454,17 +549,17 @@
     <div class="svc-card reveal">
       <div class="svc-num">03</div>
       <div class="svc-title">Carpet Cleaning</div>
-      <p class="svc-desc">Hot water extraction and dry cleaning for all carpet types , lifting deep-seated dirt and leaving fibres clean, fresh, and revived.</p>
+      <p class="svc-desc">Hot water extraction and dry cleaning for all carpet types — lifting deep-seated dirt and leaving fibres clean, fresh, and revived.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">04</div>
       <div class="svc-title">Tiles Scrubbing</div>
-      <p class="svc-desc">Machine-powered scrubbing of tiles and grout lines , removing built-up grime, mold, and staining to restore original shine.</p>
+      <p class="svc-desc">Machine-powered scrubbing of tiles and grout lines — removing built-up grime, mold, and staining to restore original shine.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">05</div>
       <div class="svc-title">Floor Cleaning</div>
-      <p class="svc-desc">Thorough floor polishing and deep cleaning for all hard floor surfaces , leaving them spotless, streak-free, and gleaming.</p>
+      <p class="svc-desc">Thorough floor polishing and deep cleaning for all hard floor surfaces — leaving them spotless, streak-free, and gleaming.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">06</div>
@@ -486,14 +581,14 @@
           <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
           <div>
             <h4>Professional Machines</h4>
-            <p>We use industry-grade equipment that goes deeper than any manual clean , guaranteed results every time.</p>
+            <p>We use industry-grade equipment that goes deeper than any manual clean — guaranteed results every time.</p>
           </div>
         </div>
         <div class="why-item reveal">
           <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
           <div>
             <h4>Trained Technicians</h4>
-            <p>Our team knows exactly how to handle every surface and fabric type , safely, efficiently, and thoroughly.</p>
+            <p>Our team knows exactly how to handle every surface and fabric type — safely, efficiently, and thoroughly.</p>
           </div>
         </div>
         <div class="why-item reveal">
@@ -507,39 +602,111 @@
     </div>
     <div class="why-right reveal">
       <div class="why-right-title">Ready to book a clean?</div>
-      <div class="why-right-sub">We cover all of Nairobi. Reach out today and we will get you sorted fast.</div>
+      <div class="why-right-sub">We cover all of Nairobi and Mombasa. Reach out today and we will get you sorted fast.</div>
       <div class="why-nums">
         <div class="why-num-item"><span class="why-num-n">6</span><span class="why-num-l">Services</span></div>
         <div class="why-num-item"><span class="why-num-n">100%</span><span class="why-num-l">Satisfaction</span></div>
-        <div class="why-num-item"><span class="why-num-n">NBO</span><span class="why-num-l">Nairobi Wide</span></div>
+        <div class="why-num-item"><span class="why-num-n">2</span><span class="why-num-l">Cities</span></div>
         <div class="why-num-item"><span class="why-num-n">24/7</span><span class="why-num-l">Reachable</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <span class="sec-kicker">Get In Touch</span>
-  <h2 class="sec-title reveal">Book With Us <span>Today</span></h2>
-  <p class="contact-sub reveal">Call or WhatsApp us and we will get you sorted. Quick response guaranteed.</p>
-  <div class="contact-cards">
-    <a href="tel:+254759309280" class="c-card reveal">
-      <span class="c-lbl">Call Us</span>
-      <span class="c-val">+254 759 309 280</span>
-    </a>
-    <a href="https://www.tiktok.com/@crystalcleanersnrb?_r=1&_t=ZS-964q0x99fxx" class="c-card reveal" target="_blank">
-      <span class="c-lbl">TikTok</span>
-      <span class="c-val">@crystalcleanersnrb</span>
-    </a>
+<!-- LOCATIONS -->
+<section class="locations" id="contact">
+  <div class="sec-hd reveal">
+    <span class="sec-kicker">Where We Are</span>
+    <h2 class="sec-title">Our <span>Locations</span></h2>
+    <p class="sec-sub">Two cities, one standard of excellence. Reach out to the branch closest to you.</p>
   </div>
-  <a href="https://wa.me/254759309280" class="wa-btn reveal" target="_blank">WhatsApp Us Now</a>
+  <div class="locations-grid">
+    <div class="loc-card reveal">
+      <div class="loc-city"><div class="loc-dot"></div>Nairobi</div>
+      <div class="loc-number">0797 967 382</div>
+      <a href="https://wa.me/254797967382" class="loc-wa" target="_blank">WhatsApp Nairobi</a>
+      <a href="tel:+254797967382" class="loc-call">Call</a>
+    </div>
+    <div class="loc-card reveal">
+      <div class="loc-city"><div class="loc-dot"></div>Mombasa</div>
+      <div class="loc-number">0759 309 280</div>
+      <a href="https://wa.me/254759309280" class="loc-wa" target="_blank">WhatsApp Mombasa</a>
+      <a href="tel:+254759309280" class="loc-call">Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking" id="book">
+  <div class="booking-inner">
+    <span class="sec-kicker">Online Booking</span>
+    <h2 class="sec-title reveal">Book a <span>Clean</span></h2>
+    <p class="booking-sub reveal">Fill in your details and your booking will be sent directly to the right WhatsApp number for your city. Quick response guaranteed.</p>
+
+    <div class="bform reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" placeholder="e.g. John Kamau" />
+        </div>
+        <div class="form-group">
+          <label for="fphone">Your Phone Number</label>
+          <input type="tel" id="fphone" placeholder="e.g. 0712 345 678" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fcity">Your City</label>
+          <select id="fcity" onchange="updateCityNotice()">
+            <option value="">Select your city</option>
+            <option value="nairobi">Nairobi</option>
+            <option value="mombasa">Mombasa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fservice">Service Required</label>
+          <select id="fservice">
+            <option value="">Select a service</option>
+            <option value="Sofa Cleaning">Sofa Cleaning</option>
+            <option value="Mattress Cleaning">Mattress Cleaning</option>
+            <option value="Carpet Cleaning">Carpet Cleaning</option>
+            <option value="Tiles Scrubbing">Tiles Scrubbing</option>
+            <option value="Floor Cleaning">Floor Cleaning</option>
+            <option value="Car Detailing">Car Detailing</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fdate">Preferred Date &amp; Time</label>
+        <input type="text" id="fdate" placeholder="e.g. Monday 12 May, morning" />
+      </div>
+      <div class="form-group">
+        <label for="faddress">Address / Location Details</label>
+        <input type="text" id="faddress" placeholder="e.g. Westlands, near ABC mall" />
+      </div>
+      <div class="form-group">
+        <label for="fnotes">Additional Notes (optional)</label>
+        <textarea id="fnotes" placeholder="e.g. 3-seater sofa, heavy stains on cushions..."></textarea>
+      </div>
+
+      <div class="city-notice" id="city-notice"></div>
+
+      <button class="btn-submit" onclick="submitBooking()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.132.558 4.13 1.532 5.864L0 24l6.32-1.503A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.66-.5-5.19-1.374l-.371-.22-3.753.892.935-3.65-.242-.382A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Send Booking via WhatsApp
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>Crystal Cleaners Nairobi</strong></p>
-  <p>Nairobi, Kenya &nbsp;|&nbsp; <a href="tel:+254759309280">+254 759 309 280</a></p>
+  <p><strong>Crystal Cleaners</strong></p>
+  <p>
+    Nairobi: <a href="tel:+254797967382">0797 967 382</a>
+    &nbsp;|&nbsp;
+    Mombasa: <a href="tel:+254759309280">0759 309 280</a>
+  </p>
   <p style="margin-top:8px; font-size:12px;">&#169; 2026 Crystal Cleaners. All rights reserved.</p>
 </footer>
 
@@ -558,6 +725,64 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+
+  // City notice
+  function updateCityNotice() {
+    const city = document.getElementById("fcity").value;
+    const notice = document.getElementById("city-notice");
+    if (city === "nairobi") {
+      notice.textContent = "Your booking will be sent to our Nairobi team: 0797 967 382";
+      notice.classList.add("show");
+    } else if (city === "mombasa") {
+      notice.textContent = "Your booking will be sent to our Mombasa team: 0759 309 280";
+      notice.classList.add("show");
+    } else {
+      notice.classList.remove("show");
+    }
+  }
+
+  // Booking submission — builds WhatsApp message and routes to correct number
+  function submitBooking() {
+    const name    = document.getElementById("fname").value.trim();
+    const phone   = document.getElementById("fphone").value.trim();
+    const city    = document.getElementById("fcity").value;
+    const service = document.getElementById("fservice").value;
+    const date    = document.getElementById("fdate").value.trim();
+    const address = document.getElementById("faddress").value.trim();
+    const notes   = document.getElementById("fnotes").value.trim();
+
+    if (!name || !phone || !city || !service || !date || !address) {
+      alert("Please fill in all required fields before sending.");
+      return;
+    }
+
+    const waNumbers = {
+      nairobi:  "254797967382",
+      mombasa:  "254759309280"
+    };
+
+    const cityLabel = city.charAt(0).toUpperCase() + city.slice(1);
+    const number = waNumbers[city];
+
+    const message = [
+      "Hello Crystal Cleaners " + cityLabel + ",",
+      "",
+      "I would like to book a cleaning service.",
+      "",
+      "Name: " + name,
+      "Phone: " + phone,
+      "City: " + cityLabel,
+      "Service: " + service,
+      "Preferred Date/Time: " + date,
+      "Address: " + address,
+      notes ? "Notes: " + notes : "",
+      "",
+      "Please confirm availability. Thank you!"
+    ].filter(Boolean).join("\n");
+
+    const encoded = encodeURIComponent(message);
+    window.open("https://wa.me/" + number + "?text=" + encoded, "_blank");
+  }
 </script>
 </body>
 </html>
