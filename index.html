@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crystal Cleaners Nairobi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1a6fc4;
+      --blue-deep:  #0f4a8a;
+      --blue-sky:   #2bb5e8;
+      --blue-light: #e8f4fd;
+      --blue-pale:  #f0f8ff;
+      --white:      #ffffff;
+      --off:        #f6faff;
+      --ink:        #0a1f3d;
+      --muted:      #5a7a9a;
+      --border:     #daeaf8;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Outfit", sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%; height: 70px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-brand img { height: 44px; object-fit: contain; }
+    .brand-name { font-family: "Syne", sans-serif; font-size: 15px; font-weight: 700; color: var(--blue-deep); letter-spacing: 0.3px; }
+    .brand-sub  { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 1px; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-book {
+      background: var(--blue) !important;
+      color: white !important;
+      padding: 10px 22px; border-radius: 4px;
+      font-weight: 600 !important; font-size: 13px !important;
+      transition: background 0.2s !important;
+    }
+    .nav-book:hover { background: var(--blue-deep) !important; }
+
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .ham span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+
+    .mobile-menu {
+      display: none; flex-direction: column;
+      position: fixed; top: 70px; left: 0; right: 0; z-index: 99;
+      background: white; border-bottom: 1px solid var(--border);
+      padding: 16px 6%; gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--ink); text-decoration: none;
+      font-size: 15px; font-weight: 500;
+      padding: 15px 0; border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--white);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 130px 6% 90px;
+      position: relative; overflow: hidden;
+    }
+
+    /* big background C shape */
+    .hero-bg-shape {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      border: 80px solid var(--blue-light);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hero-bg-shape-2 {
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue-light);
+      border: 1px solid rgba(43,181,232,0.3);
+      border-radius: 100px; padding: 7px 16px; margin-bottom: 30px;
+      position: relative; z-index: 2;
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-sky); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .hero-badge span { font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: 1px; }
+
+    .hero h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(38px, 6.5vw, 82px);
+      font-weight: 800; line-height: 1.05;
+      color: var(--ink); margin-bottom: 8px;
+      position: relative; z-index: 2;
+    }
+    .hero h1 .blue { color: var(--blue); }
+    .hero h1 .sky  { color: var(--blue-sky); }
+
+    .hero-line {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-sky));
+      border-radius: 2px; margin: 22px auto;
+      position: relative; z-index: 2;
+    }
+
+    .hero-tagline {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--muted); line-height: 1.75;
+      max-width: 500px; margin-bottom: 48px;
+      font-weight: 400; position: relative; z-index: 2;
+    }
+
+    /* pillars row */
+    .hero-pillars {
+      display: flex; gap: 28px; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 44px; position: relative; z-index: 2;
+    }
+    .pillar {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; color: var(--blue-deep);
+    }
+    .pillar-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-sky));
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .pillar-check svg { width: 11px; height: 11px; stroke: white; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 2; }
+    .btn-blue {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      color: white; text-decoration: none; padding: 15px 34px;
+      border-radius: 5px; font-weight: 600; font-size: 15px; transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(26,111,196,0.3);
+    }
+    .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(26,111,196,0.4); }
+    .btn-outline-blue {
+      display: inline-flex; align-items: center; gap: 9px;
+      border: 2px solid var(--blue); color: var(--blue);
+      text-decoration: none; padding: 13px 34px;
+      border-radius: 5px; font-weight: 600; font-size: 15px; transition: all 0.25s;
+    }
+    .btn-outline-blue:hover { background: var(--blue); color: white; transform: translateY(-2px); }
+
+    /* ── SERVICES ── */
+    .services { background: var(--off); padding: 100px 6%; }
+    .sec-hd { text-align: center; margin-bottom: 60px; }
+    .sec-kicker {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      font-weight: 700; color: var(--blue-sky); margin-bottom: 14px; display: block;
+    }
+    .sec-title {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(28px, 4vw, 46px); font-weight: 800;
+      color: var(--ink); line-height: 1.1;
+    }
+    .sec-title span { color: var(--blue); }
+    .sec-sub { color: var(--muted); font-size: 16px; margin-top: 14px; max-width: 480px; margin-inline: auto; line-height: 1.75; }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .svc-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 36px 28px;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .svc-card::before {
+      content: "";
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-sky));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    }
+    .svc-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(26,111,196,0.12); border-color: rgba(43,181,232,0.3); }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-num {
+      font-family: "Syne", sans-serif; font-size: 42px; font-weight: 800;
+      color: var(--blue-light); line-height: 1; margin-bottom: 16px;
+    }
+    .svc-title { font-family: "Syne", sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+    .svc-desc { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+    /* ── WHY US ── */
+    .why { padding: 100px 6%; background: white; }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-left .sec-title { text-align: left; }
+    .why-intro { font-size: 16px; color: var(--muted); line-height: 1.8; margin-top: 16px; margin-bottom: 40px; }
+    .why-list { display: flex; flex-direction: column; gap: 24px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; }
+    .why-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--blue-light); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-icon svg { width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .why-item h4 { font-family: "Syne", sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .why-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    .why-right {
+      background: linear-gradient(145deg, var(--blue-deep), var(--blue));
+      border-radius: 16px; padding: 48px 40px;
+      color: white; text-align: center;
+    }
+    .why-right-title { font-family: "Syne", sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+    .why-right-sub { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 36px; }
+    .why-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .why-num-item { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 24px 16px; }
+    .why-num-n { font-family: "Syne", sans-serif; font-size: 36px; font-weight: 800; color: var(--blue-sky); display: block; }
+    .why-num-l { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 6px; display: block; }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--off); padding: 100px 6%; text-align: center;
+    }
+    .contact .sec-title { text-align: center; }
+    .contact-sub { color: var(--muted); font-size: 16px; margin-top: 14px; margin-bottom: 52px; line-height: 1.75; }
+    .contact-cards { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .c-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 8px; padding: 28px 36px;
+      min-width: 180px; text-decoration: none; display: block; transition: all 0.3s;
+    }
+    .c-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(26,111,196,0.1); }
+    .c-lbl { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-sky); display: block; margin-bottom: 8px; font-weight: 600; }
+    .c-val { font-family: "Syne", sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25d366; color: white; text-decoration: none;
+      padding: 16px 44px; border-radius: 5px; font-weight: 700; font-size: 16px;
+      transition: all 0.25s; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+    .wa-btn:hover { background: #22c55e; transform: translateY(-2px); box-shadow: 0 10px 36px rgba(37,211,102,0.35); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.4);
+      text-align: center; padding: 28px 6%; font-size: 13px; line-height: 1.9;
+    }
+    footer strong { color: rgba(255,255,255,0.7); }
+    footer a { color: var(--blue-sky); text-decoration: none; }
+    footer a:hover { color: white; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.on { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .nav-links { display: none; }
+      .ham { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .svc-grid { grid-template-columns: 1fr; }
+      section, .services, .why, .contact { padding: 70px 5%; }
+      .hero { padding: 110px 5% 70px; }
+      .hero-pillars { flex-direction: column; align-items: center; gap: 14px; }
+      .contact-cards { flex-direction: column; align-items: center; }
+      .c-card { min-width: 260px; }
+      .hero-bg-shape, .hero-bg-shape-2 { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-brand">
+    <!-- Replace logo.png with your actual logo filename -->
+    <img src="crystalcleanerslogo.jpeg" alt="Crystal Cleaners" />
+    <div>
+      <span class="brand-name">Crystal Cleaners</span>
+      <span class="brand-sub">Nairobi</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-book">Book Now</a></li>
+  </ul>
+  <button class="ham" id="ham" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#why" onclick="closeMenu()">Why Us</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#contact" onclick="closeMenu()">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-shape-2"></div>
+
+  <div class="hero-badge"><div class="badge-dot"></div><span>Nairobi's Deep Cleaning Specialists</span></div>
+
+  <h1>
+    <span class="blue">Crystal</span> Clean.<br>
+    <span class="sky">Every</span> Time.
+  </h1>
+  <div class="hero-line"></div>
+
+  <p class="hero-tagline">Professional deep cleaning for sofas, mattresses, carpets, floors, tiles, and cars , powered by quality machines and delivered with care.</p>
+
+  <div class="hero-pillars">
+    <div class="pillar">
+      <div class="pillar-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+      Quality Machines
+    </div>
+    <div class="pillar">
+      <div class="pillar-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+      Quality Service
+    </div>
+    <div class="pillar">
+      <div class="pillar-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+      Great Customer Service
+    </div>
+  </div>
+
+  <div class="hero-ctas">
+    <a href="https://wa.me/254759309280" class="btn-blue" target="_blank">Book With Us Today</a>
+    <a href="#services" class="btn-outline-blue">See Our Services</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-hd reveal">
+    <span class="sec-kicker">What We Do</span>
+    <h2 class="sec-title">Our <span>Services</span></h2>
+    <p class="sec-sub">Professional deep cleaning powered by quality machines , for every surface in your home and car.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-title">Sofa Cleaning</div>
+      <p class="svc-desc">Deep extraction cleaning for all sofa types , removing stains, allergens, and odours and restoring fabric freshness professionally.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">02</div>
+      <div class="svc-title">Mattress Cleaning</div>
+      <p class="svc-desc">Professional mattress sanitisation and deep cleaning that removes dust mites, bacteria, and stains for a healthier sleep environment.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">03</div>
+      <div class="svc-title">Carpet Cleaning</div>
+      <p class="svc-desc">Hot water extraction and dry cleaning for all carpet types , lifting deep-seated dirt and leaving fibres clean, fresh, and revived.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">04</div>
+      <div class="svc-title">Tiles Scrubbing</div>
+      <p class="svc-desc">Machine-powered scrubbing of tiles and grout lines , removing built-up grime, mold, and staining to restore original shine.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">05</div>
+      <div class="svc-title">Floor Cleaning</div>
+      <p class="svc-desc">Thorough floor polishing and deep cleaning for all hard floor surfaces , leaving them spotless, streak-free, and gleaming.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">06</div>
+      <div class="svc-title">Car Detailing</div>
+      <p class="svc-desc">Full interior car detailing including seat extraction, carpet cleaning, dashboard wipe-down, and odour removal for a showroom finish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <span class="sec-kicker">Why Crystal Cleaners</span>
+      <h2 class="sec-title">The difference is in the <span>detail</span></h2>
+      <p class="why-intro">We invest in professional-grade machines and trained staff so that every clean delivers a result you can see and feel.</p>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+          <div>
+            <h4>Professional Machines</h4>
+            <p>We use industry-grade equipment that goes deeper than any manual clean , guaranteed results every time.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div>
+            <h4>Trained Technicians</h4>
+            <p>Our team knows exactly how to handle every surface and fabric type , safely, efficiently, and thoroughly.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div>
+            <h4>Great Customer Service</h4>
+            <p>Friendly, responsive, and reliable. We keep you updated and make the whole experience stress-free.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right reveal">
+      <div class="why-right-title">Ready to book a clean?</div>
+      <div class="why-right-sub">We cover all of Nairobi. Reach out today and we will get you sorted fast.</div>
+      <div class="why-nums">
+        <div class="why-num-item"><span class="why-num-n">6</span><span class="why-num-l">Services</span></div>
+        <div class="why-num-item"><span class="why-num-n">100%</span><span class="why-num-l">Satisfaction</span></div>
+        <div class="why-num-item"><span class="why-num-n">NBO</span><span class="why-num-l">Nairobi Wide</span></div>
+        <div class="why-num-item"><span class="why-num-n">24/7</span><span class="why-num-l">Reachable</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="sec-kicker">Get In Touch</span>
+  <h2 class="sec-title reveal">Book With Us <span>Today</span></h2>
+  <p class="contact-sub reveal">Call or WhatsApp us and we will get you sorted. Quick response guaranteed.</p>
+  <div class="contact-cards">
+    <a href="tel:+254759309280" class="c-card reveal">
+      <span class="c-lbl">Call Us</span>
+      <span class="c-val">+254 759 309 280</span>
+    </a>
+    <a href="https://www.tiktok.com/@crystalcleanersnrb?_r=1&_t=ZS-964q0x99fxx" class="c-card reveal" target="_blank">
+      <span class="c-lbl">TikTok</span>
+      <span class="c-val">@crystalcleanersnrb</span>
+    </a>
+  </div>
+  <a href="https://wa.me/254759309280" class="wa-btn reveal" target="_blank">WhatsApp Us Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Crystal Cleaners Nairobi</strong></p>
+  <p>Nairobi, Kenya &nbsp;|&nbsp; <a href="tel:+254759309280">+254 759 309 280</a></p>
+  <p style="margin-top:8px; font-size:12px;">&#169; 2026 Crystal Cleaners. All rights reserved.</p>
+</footer>
+
+<script>
+  const ham = document.getElementById("ham");
+  const mob = document.getElementById("mobile-menu");
+  ham.addEventListener("click", () => mob.classList.toggle("open"));
+  function closeMenu() { mob.classList.remove("open"); }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add("on"), i * 55);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
