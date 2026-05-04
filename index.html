@@ -283,20 +283,88 @@
     .reveal.on { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
+
+    /* Large tablets / small laptops: 960px–1199px */
+    @media (max-width: 1199px) {
+      .why-inner { gap: 48px; }
+      .why-right { padding: 36px 28px; }
+    }
+
+    /* Tablets: 768px–960px */
     @media (max-width: 960px) {
-      .svc-grid { grid-template-columns: 1fr 1fr; }
-      .why-inner { grid-template-columns: 1fr; gap: 48px; }
       .nav-links { display: none; }
       .ham { display: flex; }
+
+      .hero { padding: 120px 6% 80px; }
+      .hero h1 { font-size: clamp(36px, 7vw, 58px); }
+
+      .svc-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .why-left .sec-title { text-align: left; }
+      .why-right { padding: 36px 28px; }
+      .why-nums { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .why-num-item { padding: 18px 10px; }
+      .why-num-n { font-size: 26px; }
+
+      .services, .why, .contact { padding: 80px 6%; }
     }
-    @media (max-width: 600px) {
-      .svc-grid { grid-template-columns: 1fr; }
-      section, .services, .why, .contact { padding: 70px 5%; }
+
+    /* Large phones / small tablets: 600px–767px */
+    @media (max-width: 767px) {
       .hero { padding: 110px 5% 70px; }
-      .hero-pillars { flex-direction: column; align-items: center; gap: 14px; }
+      .hero h1 { font-size: clamp(32px, 8vw, 52px); }
+      .hero-tagline { font-size: 15px; max-width: 100%; }
+      .hero-pillars { gap: 16px; }
+      .hero-ctas { flex-direction: column; align-items: center; width: 100%; }
+      .btn-blue, .btn-outline-blue { width: 100%; max-width: 320px; justify-content: center; }
+      .hero-bg-shape { width: 400px; height: 400px; border-width: 50px; }
+      .hero-bg-shape-2 { width: 550px; height: 550px; }
+
+      .svc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .svc-card { padding: 28px 20px; }
+      .svc-num { font-size: 32px; }
+
+      .why-nums { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+      .services, .why, .contact { padding: 70px 5%; }
+
       .contact-cards { flex-direction: column; align-items: center; }
-      .c-card { min-width: 260px; }
+      .c-card { width: 100%; max-width: 320px; text-align: center; }
+      .wa-btn { width: 100%; max-width: 320px; justify-content: center; }
+    }
+
+    /* Small phones: max 480px */
+    @media (max-width: 480px) {
+      nav { padding: 0 4%; }
+      .brand-name { font-size: 13px; }
+      .brand-sub { display: none; }
+      .nav-brand img { height: 36px; }
+
+      .hero { padding: 100px 4% 60px; }
+      .hero h1 { font-size: clamp(30px, 9vw, 44px); }
+      .hero-badge span { font-size: 10px; letter-spacing: 0.5px; }
       .hero-bg-shape, .hero-bg-shape-2 { display: none; }
+
+      .svc-grid { grid-template-columns: 1fr; }
+      .svc-card { padding: 28px 22px; }
+
+      .why-right { padding: 30px 20px; }
+      .why-right-title { font-size: 18px; }
+      .why-nums { grid-template-columns: 1fr 1fr; }
+      .why-num-n { font-size: 28px; }
+
+      .services, .why, .contact { padding: 60px 4%; }
+      .sec-title { font-size: clamp(24px, 7vw, 36px); }
+
+      footer { padding: 24px 4%; font-size: 12px; }
+    }
+
+    /* Very small phones: max 360px */
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 28px; }
+      .pillar { font-size: 13px; }
+      .btn-blue, .btn-outline-blue { font-size: 14px; padding: 13px 24px; }
     }
   </style>
 </head>
@@ -342,7 +410,7 @@
   </h1>
   <div class="hero-line"></div>
 
-  <p class="hero-tagline">Professional deep cleaning for sofas, mattresses, carpets, floors, tiles, and cars , powered by quality machines and delivered with care.</p>
+  <p class="hero-tagline">Professional deep cleaning for sofas, mattresses, carpets, floors, tiles, and cars — powered by quality machines and delivered with care.</p>
 
   <div class="hero-pillars">
     <div class="pillar">
@@ -370,13 +438,13 @@
   <div class="sec-hd reveal">
     <span class="sec-kicker">What We Do</span>
     <h2 class="sec-title">Our <span>Services</span></h2>
-    <p class="sec-sub">Professional deep cleaning powered by quality machines , for every surface in your home and car.</p>
+    <p class="sec-sub">Professional deep cleaning powered by quality machines — for every surface in your home and car.</p>
   </div>
   <div class="svc-grid">
     <div class="svc-card reveal">
       <div class="svc-num">01</div>
       <div class="svc-title">Sofa Cleaning</div>
-      <p class="svc-desc">Deep extraction cleaning for all sofa types , removing stains, allergens, and odours and restoring fabric freshness professionally.</p>
+      <p class="svc-desc">Deep extraction cleaning for all sofa types — removing stains, allergens, and odours and restoring fabric freshness professionally.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">02</div>
@@ -386,17 +454,17 @@
     <div class="svc-card reveal">
       <div class="svc-num">03</div>
       <div class="svc-title">Carpet Cleaning</div>
-      <p class="svc-desc">Hot water extraction and dry cleaning for all carpet types , lifting deep-seated dirt and leaving fibres clean, fresh, and revived.</p>
+      <p class="svc-desc">Hot water extraction and dry cleaning for all carpet types — lifting deep-seated dirt and leaving fibres clean, fresh, and revived.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">04</div>
       <div class="svc-title">Tiles Scrubbing</div>
-      <p class="svc-desc">Machine-powered scrubbing of tiles and grout lines , removing built-up grime, mold, and staining to restore original shine.</p>
+      <p class="svc-desc">Machine-powered scrubbing of tiles and grout lines — removing built-up grime, mold, and staining to restore original shine.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">05</div>
       <div class="svc-title">Floor Cleaning</div>
-      <p class="svc-desc">Thorough floor polishing and deep cleaning for all hard floor surfaces , leaving them spotless, streak-free, and gleaming.</p>
+      <p class="svc-desc">Thorough floor polishing and deep cleaning for all hard floor surfaces — leaving them spotless, streak-free, and gleaming.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">06</div>
@@ -418,14 +486,14 @@
           <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
           <div>
             <h4>Professional Machines</h4>
-            <p>We use industry-grade equipment that goes deeper than any manual clean , guaranteed results every time.</p>
+            <p>We use industry-grade equipment that goes deeper than any manual clean — guaranteed results every time.</p>
           </div>
         </div>
         <div class="why-item reveal">
           <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
           <div>
             <h4>Trained Technicians</h4>
-            <p>Our team knows exactly how to handle every surface and fabric type , safely, efficiently, and thoroughly.</p>
+            <p>Our team knows exactly how to handle every surface and fabric type — safely, efficiently, and thoroughly.</p>
           </div>
         </div>
         <div class="why-item reveal">
@@ -458,11 +526,11 @@
   <div class="contact-cards">
     <a href="tel:+254759309280" class="c-card reveal">
       <span class="c-lbl">Call Us</span>
-      <span class="c-val">+254 759 309 280</span>
+      <span class="c-val">+254 700 000 000</span>
     </a>
     <a href="https://www.tiktok.com/@crystalcleanersnrb?_r=1&_t=ZS-964q0x99fxx" class="c-card reveal" target="_blank">
       <span class="c-lbl">TikTok</span>
-      <span class="c-val">@crystalcleanersnrb</span>
+      <span class="c-val">@crystalcleaners</span>
     </a>
   </div>
   <a href="https://wa.me/254759309280" class="wa-btn reveal" target="_blank">WhatsApp Us Now</a>
@@ -471,7 +539,7 @@
 <!-- FOOTER -->
 <footer>
   <p><strong>Crystal Cleaners Nairobi</strong></p>
-  <p>Nairobi, Kenya &nbsp;|&nbsp; <a href="tel:+254759309280">+254 759 309 280</a></p>
+  <p>Nairobi, Kenya &nbsp;|&nbsp; <a href="tel:+254759309280">+254 700 000 000</a></p>
   <p style="margin-top:8px; font-size:12px;">&#169; 2026 Crystal Cleaners. All rights reserved.</p>
 </footer>
 
